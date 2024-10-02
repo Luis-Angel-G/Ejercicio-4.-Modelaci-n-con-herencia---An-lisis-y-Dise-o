@@ -1,4 +1,4 @@
-class Mamifero extends Animal{
+class Mamifero extends Animal {
     protected int pelaje;
     protected int crias;
     protected double peso;
@@ -9,8 +9,9 @@ class Mamifero extends Animal{
     protected int recinto;
     protected int tamanio;
 
-    public Mamifero(int pelaje, int crias, double peso, int gestacion, boolean extincion, int dieta, String especie,
-            int recinto, int tamanio) {
+    public Mamifero(String nombreCientifico, String habitat, double esperanza, int pelaje, int crias, double peso, 
+                    int gestacion, boolean extincion, int dieta, String especie, int recinto, int tamanio) {
+        super(nombreCientifico, habitat, esperanza); // Llama al constructor de Animal
         this.pelaje = pelaje;
         this.crias = crias;
         this.peso = peso;
