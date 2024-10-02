@@ -101,15 +101,15 @@ public class DriverProgram {
                                           cola, color, velocidad);
         gestion.agregarAnimal(nuevoFelino);
 
-        System.out.print("¿Acepta al ejemplar? (sí/no): ");
+        System.out.print("¿Acepta al ejemplar? (si/no): ");
         String aceptacion = scanner.nextLine();
-        if (aceptacion.equalsIgnoreCase("sí")) {
+        if (aceptacion.equalsIgnoreCase("si")) {
             gestion.registrarAceptacion(nuevoFelino);
         }
 
-        System.out.print("¿Se registrará como intercambio? (sí/no): ");
+        System.out.print("¿Se registrará como intercambio? (si/no): ");
         String intercambio = scanner.nextLine();
-        if (intercambio.equalsIgnoreCase("sí")) {
+        if (intercambio.equalsIgnoreCase("si")) {
             gestion.registrarIntercambio(nuevoFelino);
         }
     }
@@ -166,15 +166,15 @@ public class DriverProgram {
                                             estructura, inteligencia, cerebro);
         gestion.agregarAnimal(nuevoPrimate);
 
-        System.out.print("¿Acepta al ejemplar? (sí/no): ");
+        System.out.print("¿Acepta al ejemplar? (si/no): ");
         String aceptacion = scanner.nextLine();
-        if (aceptacion.equalsIgnoreCase("sí")) {
+        if (aceptacion.equalsIgnoreCase("si")) {
             gestion.registrarAceptacion(nuevoPrimate);
         }
 
-        System.out.print("¿Se registrará como intercambio? (sí/no): ");
+        System.out.print("¿Se registrará como intercambio? (si/no): ");
         String intercambio = scanner.nextLine();
-        if (intercambio.equalsIgnoreCase("sí")) {
+        if (intercambio.equalsIgnoreCase("si")) {
             gestion.registrarIntercambio(nuevoPrimate);
         }
     }
