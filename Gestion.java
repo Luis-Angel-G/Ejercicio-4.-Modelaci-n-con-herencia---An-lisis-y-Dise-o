@@ -37,10 +37,10 @@ public class Gestion {
         double porcentaje = 0.0;
         switch (animal.dieta) {
             case 1:
-                porcentaje = animal instanceof Felino ? 0.07 : 0.06;
+                porcentaje = animal instanceof Felino ? 0.07 : 0.06; // Porcentaje para carnívoros
                 break;
             case 2:
-                porcentaje = 0.05;
+                porcentaje = 0.05; // Porcentaje para omnívoros
                 break;
         }
         return animal.peso * porcentaje;
@@ -68,19 +68,19 @@ public class Gestion {
 
         if (animal instanceof Felino) {
             if (animal.tamanio == 1) {
-                areaRequerida = 50;
+                areaRequerida = 50; // Pequeños
             } else if (animal.tamanio == 2) {
-                areaRequerida = 100;
+                areaRequerida = 100; // Medianos
             } else if (animal.tamanio == 3) {
-                areaRequerida = 200;
+                areaRequerida = 200; // Grandes
             }
         } else if (animal instanceof Primate) {
             if (animal.tamanio == 1) {
-                areaRequerida = 50;
+                areaRequerida = 50; // Pequeños
             } else if (animal.tamanio == 2) {
-                areaRequerida = 150;
+                areaRequerida = 150; // Medianos
             } else if (animal.tamanio == 3) {
-                areaRequerida = 400;
+                areaRequerida = 400; // Grandes
             }
         }
 
@@ -90,24 +90,22 @@ public class Gestion {
     public void registrarAceptacion(Mamifero animal) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(REGISTRO_CSV, true))) {
             String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-            writer.write(animal.getNombreCientifico() + "," + animal.getEspecie() + "," + fecha);
+            writer.write(animal.getNombreCientifico() + "," + animal.especie + "," + fecha);
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     public void registrarIntercambio(Mamifero animal) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(HISTORIAL_INTERCAMBIO_CSV, true))) {
             String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-            writer.write(animal.getNombreCientifico() + "," + animal.getEspecie() + "," + fecha);
+            writer.write(animal.getNombreCientifico() + "," + animal.especie + "," + fecha);
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    
 
     public String mostrarHistorialIntercambio() {
         StringBuilder historial = new StringBuilder();
@@ -120,5 +118,11 @@ public class Gestion {
             e.printStackTrace();
         }
         return historial.toString();
+    }
+
+    public boolean verificarCondiciones(double presupuesto, double costoConstruccion, Mamifero animal) {
+        double costoMensual = calcularCostoMensual(animal);
+        // Verifica si el presupuesto cubre los costos de construcción y mantenimiento
+        return presupuesto >= (costoConstruccion + costoMensual);
     }
 }
