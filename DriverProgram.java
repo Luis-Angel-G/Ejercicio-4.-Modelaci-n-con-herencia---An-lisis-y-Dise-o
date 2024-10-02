@@ -12,7 +12,8 @@ public class DriverProgram {
             System.out.println("3. Mostrar Lista de Animales");
             System.out.println("4. Mostrar Costos Mensuales");
             System.out.println("5. Verificar Recintos Adecuados");
-            System.out.println("6. Mostrar Historial de Intercambios");
+            System.out.println("6. Verificar Condiciones para Aceptar Ejemplares");
+            System.out.println("7. Mostrar Historial de Intercambios");
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
 
@@ -35,7 +36,10 @@ public class DriverProgram {
                 case 5: // Verificar Recintos Adecuados
                     verificarRecintosAdecuados(gestion);
                     break;
-                case 6: // Mostrar Historial de Intercambios
+                case 6: // Verificar Condiciones para Aceptar Ejemplares
+                    verificarCondiciones(gestion, scanner);
+                    break;
+                case 7: // Mostrar Historial de Intercambios
                     System.out.println("Historial de intercambios:");
                     System.out.println(gestion.mostrarHistorialIntercambio());
                     break;
@@ -192,6 +196,19 @@ public class DriverProgram {
         for (Mamifero animal : gestion.listaAnimales) {
             boolean adecuado = gestion.esRecintoAdecuado(animal);
             System.out.println("¿El recinto es adecuado para " + animal.getNombreCientifico() + "? " + (adecuado ? "Sí" : "No"));
+        }
+    }
+
+    private static void verificarCondiciones(Gestion gestion, Scanner scanner) {
+        System.out.print("Ingrese el presupuesto disponible para el año: ");
+        double presupuesto = Double.parseDouble(scanner.nextLine());
+
+        System.out.print("Ingrese el costo de construcción del recinto: ");
+        double costoConstruccion = Double.parseDouble(scanner.nextLine());
+
+        for (Mamifero animal : gestion.listaAnimales) {
+            boolean condicionesAdecuadas = gestion.verificarCondiciones(presupuesto, costoConstruccion, animal);
+            System.out.println("¿Es adecuado aceptar al ejemplar " + animal.getNombreCientifico() + "? " + (condicionesAdecuadas ? "Sí" : "No"));
         }
     }
 }
