@@ -90,22 +90,24 @@ public class Gestion {
     public void registrarAceptacion(Mamifero animal) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(REGISTRO_CSV, true))) {
             String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-            writer.write(animal.getNombreCientifico() + "," + animal.especie + "," + fecha);
+            writer.write(animal.getNombreCientifico() + "," + animal.getEspecie() + "," + fecha);
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    
     public void registrarIntercambio(Mamifero animal) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(HISTORIAL_INTERCAMBIO_CSV, true))) {
             String fecha = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-            writer.write(animal.getNombreCientifico() + "," + animal.especie + "," + fecha);
+            writer.write(animal.getNombreCientifico() + "," + animal.getEspecie() + "," + fecha);
             writer.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
+    
 
     public String mostrarHistorialIntercambio() {
         StringBuilder historial = new StringBuilder();
