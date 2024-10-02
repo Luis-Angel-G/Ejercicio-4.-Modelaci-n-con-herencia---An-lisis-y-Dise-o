@@ -4,7 +4,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class Gestion {
-    private ArrayList<Mamifero> listaAnimales = new ArrayList<>();
+    protected ArrayList<Mamifero> listaAnimales = new ArrayList<>();
     private static final String REGISTRO_CSV = "registro_aceptados.csv";
     private static final String HISTORIAL_INTERCAMBIO_CSV = "historial_intercambios.csv";
 
