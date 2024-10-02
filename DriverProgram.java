@@ -181,7 +181,7 @@ public class DriverProgram {
 
     private static void mostrarCostosMensuales(Gestion gestion) {
         System.out.println("=== Costos Mensuales ===");
-        for (Mamifero animal : gestion.getListaAnimales()) {
+        for (Mamifero animal : gestion.listaAnimales) {
             double costoMensual = gestion.calcularCostoMensual(animal);
             System.out.println("El costo mensual de mantenimiento para " + animal.getNombreCientifico() + " es: Q" + costoMensual);
         }
@@ -189,7 +189,7 @@ public class DriverProgram {
 
     private static void verificarRecintosAdecuados(Gestion gestion) {
         System.out.println("=== Verificación de Recintos Adecuados ===");
-        for (Mamifero animal : gestion.getListaAnimales()) {
+        for (Mamifero animal : gestion.listaAnimales) {
             boolean adecuado = gestion.esRecintoAdecuado(animal);
             System.out.println("¿El recinto es adecuado para " + animal.getNombreCientifico() + "? " + (adecuado ? "Sí" : "No"));
         }
